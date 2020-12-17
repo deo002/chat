@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 const User = require('./models/user');
 const jwt = require('jsonwebtoken');
 const secret = process.env.SECRET;
+const { setupWebSocketServer } = require('./websocket.js');
 
 const app = express();
 
@@ -73,3 +74,5 @@ app.post('/api/login', async (req, res) => {
 app.listen(1337, () => {
     console.log('Server has started!');
 });
+
+setupWebSocketServer();
